@@ -1,0 +1,44 @@
+<div class="panel">
+  <h3>Add Food Entry</h3>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <label>Food name</label>
+      <input type="text" formControlName="foodName" placeholder="e.g., Chicken breast" />
+    </div>
+
+    <div class="row two">
+      <div>
+        <label>Quantity (g)</label>
+        <input type="number" formControlName="quantity" min="1" />
+      </div>
+      <div>
+        <label>Calories</label>
+        <input type="number" formControlName="calories" min="0" step="1" />
+      </div>
+    </div>
+
+    <div class="row three">
+      <div>
+        <label>Protein (g)</label>
+        <input type="number" formControlName="protein" min="0" step="0.1" />
+      </div>
+      <div>
+        <label>Carbs (g)</label>
+        <input type="number" formControlName="carbs" min="0" step="0.1" />
+      </div>
+      <div>
+        <label>Fat (g)</label>
+        <input type="number" formControlName="fat" min="0" step="0.1" />
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" [disabled]="status==='saving' || form.invalid" class="btn">
+        {{ status==='saving' ? 'Saving...' : 'Add Entry' }}
+      </button>
+      <div class="status" *ngIf="status==='saved'">Saved!</div>
+      <div class="status error" *ngIf="status==='error'">{{ errorMessage }}</div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+<div class="auth-page">
+  <div class="card">
+    <h2>Welcome back</h2>
+    <p class="muted">Please sign in to continue.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>Email</label>
+      <input type="email" formControlName="email" placeholder="you@example.com" />
+
+      <label>Password</label>
+      <input type="password" formControlName="password" placeholder="••••••••" />
+
+      <button class="btn" type="submit" [disabled]="form.invalid">Sign In</button>
+
+      <div class="error" *ngIf="error">{{ error }}</div>
+    </form>
+
+    <p class="switch">No account? <a routerLink="/register">Create one</a></p>
+  </div>
+</div>

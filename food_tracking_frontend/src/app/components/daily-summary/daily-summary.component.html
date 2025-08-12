@@ -1,0 +1,22 @@
+<div class="panel">
+  <h3>Daily Summary</h3>
+  <div *ngIf="loading()" class="loading">Loading summary...</div>
+  <div *ngIf="!loading() && summary() as s" class="grid">
+    <div class="card">
+      <div class="label">Calories</div>
+      <div class="value">{{ s.calories | number: '1.0-0' }}</div>
+    </div>
+    <div class="card">
+      <div class="label">Protein</div>
+      <div class="value">{{ s.protein | number: '1.0-1' }} g</div>
+    </div>
+    <div class="card">
+      <div class="label">Carbs</div>
+      <div class="value">{{ s.carbs | number: '1.0-1' }} g</div>
+    </div>
+    <div class="card">
+      <div class="label">Fat</div>
+      <div class="value">{{ s.fat | number: '1.0-1' }} g</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+.page {
+  padding: 16px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.date-picker, .meal-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+input[type="date"], select {
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+}
+
+.entry-form {
+  grid-column: span 2;
+}
+
+.entries {
+  margin-top: 18px;
+}
+
+.loading, .empty {
+  color: var(--muted);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.qty-input {
+  width: 90px;
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+.btn {
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn.small {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.btn.danger {
+  background: #c62828;
+  color: #fff;
+}

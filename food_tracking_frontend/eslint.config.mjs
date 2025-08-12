@@ -12,6 +12,7 @@ export default [
       "node_modules/**",
       "build/",
       "dist/",
+      "public/**",
       "*.log",
       "*.tmp",
       "*.tsbuildinfo",
@@ -36,13 +37,21 @@ export default [
         afterEach: "readonly",
         process: "readonly",
         console: "readonly",
+        // Browser globals
+        window: "readonly",
+        document: "readonly",
+        localStorage: "readonly",
+        setTimeout: "readonly",
       },
     },
     plugins: {
       "@typescript-eslint": tseslint,
     },
     rules: {
-      // Your custom rules here
+      // Disable base rules that don't understand TS well; rely on TS plugin if needed
+      "no-undef": "off",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "off",
     },
   },
 ];

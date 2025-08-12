@@ -1,0 +1,30 @@
+<div class="panel">
+  <div class="panel-header">
+    <h3>Search Food</h3>
+    <input
+      class="search"
+      type="text"
+      [(ngModel)]="query"
+      (input)="onInputChange()"
+      placeholder="Search foods (e.g., apple, rice, chicken)..."
+    />
+  </div>
+
+  <div *ngIf="loading()" class="loading">Searching...</div>
+
+  <ul class="list" *ngIf="!loading() && results().length > 0">
+    <li *ngFor="let item of results()">
+      <div>
+        <div class="name">{{ item.name }}</div>
+        <div class="meta">
+          {{ item.calories | number: '1.0-0' }} kcal · P {{ item.protein | number: '1.0-1' }} · C {{ item.carbs | number: '1.0-1' }} · F {{ item.fat | number: '1.0-1' }}
+        </div>
+      </div>
+      <button class="btn" (click)="addFood(item)">Add 100g</button>
+    </li>
+  </ul>
+
+  <div *ngIf="!loading() && results().length === 0" class="empty">
+    No results. Try a different search.
+  </div>
+</div>

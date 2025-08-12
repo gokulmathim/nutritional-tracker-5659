@@ -1,0 +1,27 @@
+<div class="page">
+  <h2>Meal & Food History</h2>
+  <div *ngIf="loading()" class="loading">Loading...</div>
+
+  <table *ngIf="!loading() && entries().length > 0">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Meal</th>
+        <th>Food</th>
+        <th>Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of entries()">
+        <td>{{ e.date }}</td>
+        <td>{{ e.mealType }}</td>
+        <td>{{ e.foodName || 'Food' }}</td>
+        <td>{{ e.quantity }} g</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading() && entries().length === 0" class="empty">
+    No history found.
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<nav class="nav">
+  <div class="brand">
+    <span class="dot"></span>
+    <a routerLink="/" class="title">Nutritional Tracker</a>
+  </div>
+  <ul class="links">
+    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
+    <li><a routerLink="/history" routerLinkActive="active">History</a></li>
+  </ul>
+  <div class="auth">
+    <ng-container *ngIf="isAuthed(); else guest">
+      <button class="btn outline" (click)="logout()">Logout</button>
+    </ng-container>
+    <ng-template #guest>
+      <a routerLink="/login" class="btn">Login</a>
+      <a routerLink="/register" class="btn ghost">Register</a>
+    </ng-template>
+  </div>
+</nav>

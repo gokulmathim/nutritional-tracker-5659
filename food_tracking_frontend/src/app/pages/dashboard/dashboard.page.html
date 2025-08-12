@@ -1,0 +1,75 @@
+<div class="page">
+  <div class="toolbar">
+    <div class="date-picker">
+      <label for="date">Date</label>
+      <input id="date" type="date" [(ngModel)]="selectedDate" (change)="onDateChange()" />
+    </div>
+    <div class="meal-picker">
+      <label for="meal">Meal</label>
+      <select id="meal" [(ngModel)]="mealType">
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="snack">Snack</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid">
+    <section>
+      <app-daily-summary [date]="selectedDate"></app-daily-summary>
+    </section>
+
+    <section>
+      <app-food-search (add)="onFoodAdd($event)"></app-food-search>
+    </section>
+
+    <section class="entry-form">
+      <app-food-entry-form
+        [date]="selectedDate"
+        [mealType]="mealType"
+        [selectedFood]="selectedFood">
+      </app-food-entry-form>
+    </section>
+  </div>
+
+  <div class="entries">
+    <h3>Entries for {{ selectedDate }}</h3>
+    <div *ngIf="loadingEntries()" class="loading">Loading entries...</div>
+    <table *ngIf="!loadingEntries() && entries().length > 0">
+      <thead>
+        <tr>
+          <th>Meal</th>
+          <th>Food</th>
+          <th>Qty</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of entries()">
+          <td>{{ e.mealType }}</td>
+          <td>{{ e.foodName || 'Food' }}</td>
+          <td>
+            <ng-container *ngIf="editingId !== e.id; else editing">
+              {{ e.quantity }} g
+            </ng-container>
+            <ng-template #editing>
+              <input type="number" [(ngModel)]="editQuantity" min="1" class="qty-input" />
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="editingId !== e.id; else editActions">
+              <button class="btn small ghost" (click)="startEdit(e)">Edit</button>
+              <button class="btn small danger" (click)="deleteEntry(e)">Delete</button>
+            </ng-container>
+            <ng-template #editActions>
+              <button class="btn small" (click)="saveEdit(e)">Save</button>
+              <button class="btn small ghost" (click)="cancelEdit()">Cancel</button>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="!loadingEntries() && entries().length === 0" class="empty">No entries for this date.</div>
+  </div>
+</div>

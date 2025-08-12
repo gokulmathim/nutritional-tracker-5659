@@ -1,0 +1,60 @@
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.search {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 8px;
+  outline: none;
+}
+
+.loading, .empty {
+  color: var(--muted);
+  font-size: 0.95rem;
+  padding: 8px;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.btn {
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  border: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}

@@ -1,0 +1,27 @@
+.page {
+  padding: 16px;
+}
+
+.loading, .empty {
+  color: var(--muted);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+thead {
+  background: var(--surface-2);
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+}
